@@ -12,19 +12,6 @@
         - "25565:25565"
       container_name: spigot
       volumes:
-        - type: volume
-          source: world
-          target: /minecraft/world
-
-        - type: volume
-          source: world_nether
-          target: /minecraft/world_nether
-
-        - type: volume
-          source: world_the_end
-          target: /minecraft/world_the_end
-
-  volumes:
-    world:
-    world_nether:
-    world_the_end:
+        - ./world:/minecraft/world
+        - ./world_nether:/minecraft/world_nether
+        - ./world_the_end:/minecraft/world_the_end

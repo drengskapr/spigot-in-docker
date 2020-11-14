@@ -21,4 +21,4 @@ RUN mv spigot-* spigot.jar
 
 EXPOSE 25565
 
-CMD ["./start.sh"]
+ENTRYPOINT ["./start.sh"]
