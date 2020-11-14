@@ -1,11 +1,13 @@
 FROM openjdk:15-alpine AS build
 
+ARG VERSION
+
 WORKDIR /spigot/
 
 ADD https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar BuildTools.jar
 
 RUN apk add --no-cache git && \
-	java -Xmx1024M -jar BuildTools.jar --rev latest
+	java -Xmx1024M -jar BuildTools.jar --rev $VERSION
 
 
 FROM openjdk:8-jre-buster
