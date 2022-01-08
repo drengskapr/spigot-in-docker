@@ -1,16 +1,14 @@
-FROM openjdk:15-alpine AS build
-
-ARG VERSION
+FROM openjdk:17-alpine AS build
 
 WORKDIR /spigot/
 
 ADD https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar BuildTools.jar
 
 RUN apk add --no-cache git && \
-	java -Xmx1024M -jar BuildTools.jar --rev $VERSION
+	java -Xmx1024M -jar BuildTools.jar --rev 1.18.1
 
 
-FROM openjdk:8-jre-buster
+FROM openjdk:17-jdk-slim-bullseye
 
 WORKDIR /minecraft/
 
